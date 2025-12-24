@@ -15,12 +15,18 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@types/bcrypt": "^6.0.0",
+    "@types/node": "^20.19.27",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "bcrypt": "^6.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.1.0",
+    "mongoose": "^9.0.2",
+    "next-auth": "^4.24.13",
+    "papaparse": "^5.5.3",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   }
 }
