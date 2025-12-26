@@ -14,11 +14,12 @@ const DashboardPage = ({ children }: { children: React.ReactNode;}) => {
         router.push("/login");
     };
 
-    const linkClass = (path: string) => {
+    const linkClass = (path: string) =>
         `px-4 py-2 rounded ${
-            pathname === path ? "bg-blue-600 text-white" : "text-gray-700 hover:bg-gray-100"
-        }`;
-    }
+            pathname === path 
+                ? "bg-blue-600 text-white" 
+                : "text-gray-700 hover:bg-gray-100"
+    }`;
 
     return (
       <div className="min-h-screen">
@@ -27,7 +28,7 @@ const DashboardPage = ({ children }: { children: React.ReactNode;}) => {
                   <Link href="/dashboard" className={linkClass("/dashboard")}>
                       Dashboard
                   </Link>
-                  <Link href="/dashbaord/students" className={linkClass("/dashboard/students")}>
+                  <Link href="/dashboard/students" className={linkClass("/dashboard/students")}>
                       Students
                   </Link>
               </div>
