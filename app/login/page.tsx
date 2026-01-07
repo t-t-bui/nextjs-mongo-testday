@@ -50,9 +50,14 @@ export default function LoginPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     />
-                <button className="w-full bg-blue-600 text-white p-2 rounded">
-                    Login
-                </button>
+                <div className="flex justify-between w-full">
+                    <button className="w-full bg-blue-600 text-white p-2 pr-2 rounded">
+                        Login
+                    </button>
+                    <button className="w-full bg-blue-600 text-white p-2 pl-2 rounded">
+                        Create
+                    </button>
+                </div>
             </form>
 
             {error && <p className="mt-4 text-red-600">{error}</p>}

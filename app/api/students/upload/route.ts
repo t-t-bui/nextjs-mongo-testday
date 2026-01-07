@@ -3,9 +3,33 @@ import { connectDB } from "@/lib/mongodb";
 import { parse } from "csv-parse/sync";
 
 import Students from "@/models/Students";
+import Coordinator from "@/models/Coordinator";
 
 export async function POST(req: Request) {
     await connectDB();
+
+    // auth check
+    const cookieHeader = req.headers.get("cookie");
+    const sessionId = cookieHeader
+        ?.split("; ")
+        .find((c) => c.startsWith("coordinator_session="))
+        ?.split("=")[1];
+
+    if(!sessionId) {
+        return NextResponse.json(
+            { error: "Unauthorized" },
+            { status: 401 },
+        );
+    }
+
+    const coordinator = await Coordinator.findById(sessionId);
+
+    if(!coordinator || coordinator.role !== "admin") {
+        return NextResponse.json(
+            { error: "Admins Only" },
+            { status: 403 },
+        )
+    }
 
     const formData = await req.formData();
     const file = formData.get("file") as File;

@@ -30,7 +30,7 @@ export async function POST(req: Request) {
     if(!valid) {
         return NextResponse.json(
             { error: "Invalid credentials" },
-            { error: 401 },
+            { status: 401 },
         );
     }
 

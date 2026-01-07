@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -10,6 +10,14 @@ const DashboardPage = () => {
 
     const [file, setFile] = useState<File | null>(null);
     const [message, setMessage] = useState("");
+
+    const[role, setRole] = useState<string | null>(null);
+
+    useEffect(() => {
+        fetch("/api/auth/me")
+            .then((res) => res.json())
+            .then((data) => setRole(data.role));
+    })
 
     const uploadCSV = async () => {
         if(!file) return;
@@ -70,6 +78,13 @@ const DashboardPage = () => {
                     </button>
                 </div>
             </div>
+
+            {/*{role === "admin" && <StudentsUpload />}*/}
+            {/*{role && role !== "admin" && (*/}
+            {/*    <p className="mb-4 text-sm text-gray-500">*/}
+            {/*        Only administrators can upload student rosters.*/}
+            {/*    </p>*/}
+            {/*)}*/}
         </main>
     );
 }
