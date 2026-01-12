@@ -33,24 +33,32 @@ export default function LoginPage() {
 
     return (
         <main className="max-w-md mx-auto p-8">
-            <h1 className="text-2xl font-bold mb-6">Coordinator Login</h1>
+            <div className="sm:mx-auto sm:w-full sm:max-w-sm flex justify-center">
+                <h1 className="font-bold mb-6 mt-10 text-center text-2xl/9 tracking-tight">Coordinator Login</h1>
+            </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-                <input
-                    type="email"
-                    placeholder="Email"
-                    className="w-full border p-2 rounded"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                <div>
+                    <label htmlFor="email" className="block text-sm/6 font-medium text-gray-100">Email Address</label>
+                    <input
+                        type="email"
+                        placeholder=""
+                        className="w-full border p-2 rounded"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
-                <input
+                </div>
+                <div>
+                    <label htmlFor="password" className="block text-sm/6 font-medium text-gray-100">Password</label>
+                    <input
                     type="password"
-                    placeholder="Password"
+                    placeholder=""
                     className="w-full border p-2 rounded"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     />
-                <div className="flex justify-between w-full">
+                </div>
+                <div className="flex justify-between w-full space-x-4">
                     <button className="w-full bg-blue-600 text-white p-2 pr-2 rounded">
                         Login
                     </button>
